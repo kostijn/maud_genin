@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="flex flex-col items-center animate-[fadeIn_0.5s_ease-out]">
       <img 
-        src="../../public/images/DSC_3912.JPG" 
+        src="./images/DSC_3912.JPG" 
         alt="Maud Genin" 
         className="w-36 md:w-44 h-auto grayscale object-cover mb-10"
       />

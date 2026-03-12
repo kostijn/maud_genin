@@ -1,9 +1,9 @@
 export default function Work({ onProjectClick }) {
   // Een lijst van haar projecten
   const projects = [
-    { id: 1, year: '2025', title: 'Master Thesis', img: '../../../public/images/Maquette_ex.jpg' },
-    { id: 2, year: '2025', title: 'MA2', img: '../../../public/images/Maquette_ex.jpg' },
-    { id: 3, year: '2022', title: 'Bachelor Thesis', img: '../../../public/images/Maquette_ex.jpg'  },
+    { id: 1, year: '2025', title: 'Master Thesis', img: './images/Maquette_ex.jpg' },
+    { id: 2, year: '2025', title: 'MA2', img: './images/Maquette_ex.jpg' },
+    { id: 3, year: '2022', title: 'Bachelor Thesis', img: './images/Maquette_ex.jpg'  },
   ]
 
   return (

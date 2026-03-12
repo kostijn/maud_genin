@@ -10,46 +10,46 @@ export default function Archive() {
     { 
       id: 'models', 
       title: 'Models', 
-      cover: '../../../public/images/Maquette_ex.jpg',
+      cover: './images/Maquette_ex.jpg',
       images: [
-        '../../../public/images/Maquette_ex.jpg',
-        '../../../public/images/Maquette_ex.jpg',
-        '../../../public/images/Maquette_ex.jpg',
-        '../../../public/images/Maquette_ex.jpg'
+        './images/Maquette_ex.jpg',
+        './images/Maquette_ex.jpg',
+        './images/Maquette_ex.jpg',
+        './images/Maquette_ex.jpg'
       ]
     },
     { 
       id: 'drawings', 
       title: 'Drawings', 
-     cover: '../../../public/images/Maquette_ex.jpg',
+     cover: './images/Maquette_ex.jpg',
       images: [
-        '../../../public/images/Maquette_ex.jpg',
-        '../../../public/images/Maquette_ex.jpg'
+        './images/Maquette_ex.jpg',
+        './images/Maquette_ex.jpg'
       ]
     },
     { 
       id: 'paintings', 
       title: 'Paintings', 
-      cover: '../../../public/images/Maquette_ex.jpg',
+      cover: './images/Maquette_ex.jpg',
       images: [
-       '../../../public/images/Maquette_ex.jpg'
+       './images/Maquette_ex.jpg'
       ]
     },
     { 
       id: 'details', 
       title: 'Details', 
-      cover: '../../../public/images/Maquette_ex.jpg',
+      cover: './images/Maquette_ex.jpg',
       images: [
-        '../../../public/images/Maquette_ex.jpg',
-        '../../../public/images/Maquette_ex.jpg'
+        './images/Maquette_ex.jpg',
+        './images/Maquette_ex.jpg'
       ]
     },
     { 
       id: 'exhibition', 
       title: 'Exhibition', 
-      cover: '../../../public/images/Maquette_ex.jpg',
+      cover: './images/Maquette_ex.jpg',
       images: [
-        '../../../public/images/Maquette_ex.jpg'
+        './images/Maquette_ex.jpg'
       ]
     }
   ];
