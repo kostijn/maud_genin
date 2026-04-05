@@ -59,7 +59,8 @@ function Home() {
   );
 }
 
-function ProjectWrapper({ projectId }) {
+// eslint-disable-next-line no-unused-vars
+function ProjectWrapper({ projectId, DetailComponent }) {
   const navigate = useNavigate();
   
   const projects = [
