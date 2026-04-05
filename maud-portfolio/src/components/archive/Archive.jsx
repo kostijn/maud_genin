@@ -1,91 +1,91 @@
-import { useState } from 'react';
-import ArchiveGallery from './ArchiveGallery'; // Importeer het nieuwe component!
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 
-export default function Archive() {
-  // State om bij te houden welke categorie open is
-  const [selectedCategory, setSelectedCategory] = useState(null);
+// Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-  // Data structuur
+export default function Archive({ onCategorySelect }) {
+
   const categories = [
     { 
       id: 'models', 
       title: 'Models', 
-      cover: './images/Maquette_ex.jpg',
-      images: [
-        './images/Maquette_ex.jpg',
-        './images/Maquette_ex.jpg',
-        './images/Maquette_ex.jpg',
-        './images/Maquette_ex.jpg'
-      ]
+      images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
     },
     { 
       id: 'drawings', 
       title: 'Drawings', 
-     cover: './images/Maquette_ex.jpg',
-      images: [
-        './images/Maquette_ex.jpg',
-        './images/Maquette_ex.jpg'
-      ]
+      images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
     },
     { 
-      id: 'paintings', 
-      title: 'Paintings', 
-      cover: './images/Maquette_ex.jpg',
-      images: [
-       './images/Maquette_ex.jpg'
-      ]
-    },
-    { 
-      id: 'details', 
-      title: 'Details', 
-      cover: './images/Maquette_ex.jpg',
-      images: [
-        './images/Maquette_ex.jpg',
-        './images/Maquette_ex.jpg'
-      ]
-    },
-    { 
-      id: 'exhibition', 
-      title: 'Exhibition', 
-      cover: './images/Maquette_ex.jpg',
-      images: [
-        './images/Maquette_ex.jpg'
-      ]
+      id: 'autocad', 
+      title: 'AutoCAD', 
+      images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
     }
   ];
 
-  // Als er een categorie is aangeklikt, renderen we het nieuwe component
-  if (selectedCategory) {
-    return (
-      <ArchiveGallery 
-        category={selectedCategory} 
-        onBack={() => setSelectedCategory(null)} 
-      />
-    );
-  }
-
-  // Zo niet, dan tonen we de hoofd-grid
   return (
-    <div className="w-full max-w-6xl animate-[fadeIn_0.5s_ease-out]">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        {categories.map((category) => (
-          <div 
-            key={category.id} 
-            className="group relative cursor-pointer overflow-hidden aspect-square"
-            onClick={() => setSelectedCategory(category)}
-          >
-            <img 
-              src={category.cover} 
-              alt={category.title} 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <h2 className="text-white font-bold text-2xl md:text-3xl">{category.title}</h2>
-            </div>
+    <div className="w-full max-w-7xl mx-auto space-y-16 py-10">
+      {categories.map((cat) => (
+        <section key={cat.id} className="relative px-12 group">
+          
+          {/* Sectie Header */}
+          <div className="flex justify-between items-baseline mb-4 border-b border-gray-100 pb-2">
+            <h2 className="text-lg md:text-xl uppercase tracking-[0.2em] font-light text-black">
+              {cat.title}
+            </h2>
+            <button 
+              onClick={() => onCategorySelect(cat)}
+              className="text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-black transition-colors"
+            >
+              View all →
+            </button>
           </div>
-        ))}
-      </div>
+
+          {/* Carousel */}
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={15}
+            slidesPerView={1.5} // Mobiel: 1.5 afbeeldingen zichtbaar
+            navigation={{
+              nextEl: `.archive-next-${cat.id}`,
+              prevEl: `.archive-prev-${cat.id}`,
+            }}
+            loop={true}
+            breakpoints={{
+              640: { slidesPerView: 2.5 },
+              1024: { slidesPerView: 4.5 }, // Desktop: 4.5 kleine afbeeldingen zichtbaar
+            }}
+            className="archive-swiper"
+          >
+            {cat.images.map((img, index) => (
+              <SwiperSlide key={index}>
+                <div 
+                  className="overflow-hidden aspect-[4/3] bg-gray-50"
+                >
+                  <img 
+                    src={img} 
+                    alt={`${cat.title} ${index}`} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* Custom Arrows */}
+          <button className={`archive-prev-${cat.id} absolute left-0 top-[60%] -translate-y-1/2 text-2xl font-light text-gray-300 hover:text-black transition-colors z-10`}>←</button>
+          <button className={`archive-next-${cat.id} absolute right-0 top-[60%] -translate-y-1/2 text-2xl font-light text-gray-300 hover:text-black transition-colors z-10`}>→</button>
+        </section>
+      ))}
+
+      {/* Custom CSS for hiding default arrows */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .archive-swiper .swiper-button-next, 
+        .archive-swiper .swiper-button-prev {
+          display: none;
+        }
+      `}} />
     </div>
   );
 }
