@@ -1,19 +1,45 @@
 import { useState, useEffect } from 'react'
-import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, useNavigate, useParams } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 
-// Importeer je componenten
 import About from './components/About'
 import Work from './components/work/Work'
 import Archive from './components/archive/Archive'
+import ArchiveGallery from './components/archive/ArchiveGallery'
 import Contact from './components/Contact'
 import BA3Detail from './components/work/BA3Detail'
 import BachelorThesis2025Detail from './components/work/BachelorThesis2025Detail'
 import BachelorThesis2022Detail from './components/work/BachelorThesis2022Detail'
 import UrbanInterventionDetail from './components/work/UrbanInterventionDetail'
 
+const ARCHIVE_CATEGORIES = [
+  { 
+    id: 'models', 
+    title: 'Models', 
+    images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
+  },
+  { 
+    id: 'drawings', 
+    title: 'Drawings', 
+    images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
+  },
+  { 
+    id: 'autocad', 
+    title: 'AutoCAD', 
+    images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
+  }
+];
+
+const PROJECTS = [
+  { id: 1, year: '3rd Bachelor Year 2024', title: 'BA3' },
+  { id: 2, year: '3rd Bachelor Year 2025', title: 'Bachelor Thesis' },
+  { id: 3, year: '2022', title: 'Bachelor Thesis' },
+  { id: 4, year: '2021', title: 'Urban Intervention' },
+];
+
 function Home() {
+  const navigate = useNavigate();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -35,14 +61,17 @@ function Home() {
 
         <Section id="work" className="bg-gray-50/50">
           <Work onProjectClick={(project) => {
-            window.location.hash = `/project/${project.id}`;
+            navigate(`/project/${project.id}`);
           }} />
         </Section>
 
         <Section id="archive">
-          <Archive onCategorySelect={(category) => {
-            window.location.hash = `/archive/${category}`;
-          }} />
+          <Archive 
+            categories={ARCHIVE_CATEGORIES}
+            onCategorySelect={(category) => {
+              navigate(`/archive/${category.id}`);
+            }} 
+          />
         </Section>
 
         <Section id="contact" className="bg-black text-white">
@@ -60,19 +89,44 @@ function Home() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function ProjectWrapper({ projectId, DetailComponent }) {
+function ProjectWrapper({ DetailComponent }) {
   const navigate = useNavigate();
-  
-  const projects = [
-    { id: 1, year: '3rd Bachelor Year 2024', title: 'BA3' },
-    { id: 2, year: '3rd Bachelor Year 2025', title: 'Bachelor Thesis' },
-    { id: 3, year: '2022', title: 'Bachelor Thesis' },
-    { id: 4, year: '2021', title: 'Urban Intervention' },
-  ];
-  
-  const project = projects.find(p => p.id === parseInt(projectId));
-  
+  const { projectId } = useParams();
+  const project = PROJECTS.find(p => p.id === parseInt(projectId));
   return <DetailComponent project={project} onBack={() => navigate('/')} />;
+}
+
+function ArchiveWrapper() {
+  const navigate = useNavigate();
+  const { categoryId } = useParams();
+  const category = ARCHIVE_CATEGORIES.find(c => c.id === categoryId);
+  const handleBack = () => {
+    navigate('/');
+    setTimeout(() => {
+      const element = document.getElementById('archive');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100); // kleine delay zodat de pagina eerst laadt
+  };
+
+  if (!category) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-400 mb-4">Couldn't find category.</p>
+          <button 
+            onClick={handleBack}
+            className="text-[10px] uppercase tracking-[0.3em] text-gray-500 hover:text-black transition-colors border-b border-transparent hover:border-black pb-1"
+          >
+            Back to home
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return <ArchiveGallery category={category} onBack={handleBack} />;
 }
 
 function AppLayout() {
@@ -94,7 +148,6 @@ function AppLayout() {
         setIsOverContact(false);
         return;
       }
-      
       const rect = contactSection.getBoundingClientRect();
       const isOver = rect.top < window.innerHeight * 0.3 && rect.bottom > 0;
       setIsOverContact(isOver);
@@ -124,7 +177,6 @@ function AppLayout() {
         style={{ scaleX }} 
       />
 
-      {/* Header */}
       <header className={`fixed top-0 w-full z-50 px-6 md:px-12 py-8 flex justify-between items-center border-b transition-all duration-300 ${
         isOverContact 
           ? 'bg-black/60 border-white/10 backdrop-blur-md' 
@@ -136,12 +188,11 @@ function AppLayout() {
           className={`text-xl md:text-2xl uppercase tracking-[0.3em] cursor-pointer transition-colors duration-300 ${
             isOverContact ? 'text-white' : 'text-black'
           }`}
-          onClick={() => navigate('/')}
+          onClick={() => { navigate('/'); scrollToSection('about'); }}
         >
           Maud Genin
         </motion.h1>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:block">
           <motion.ul 
             initial={{ opacity: 0, x: 20 }}
@@ -155,7 +206,6 @@ function AppLayout() {
           </motion.ul>
         </nav>
 
-        {/* Hamburger Button */}
         <button 
           className="md:hidden z-[60] flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -175,7 +225,6 @@ function AppLayout() {
         </button>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
@@ -185,7 +234,6 @@ function AppLayout() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed inset-0 bg-white z-[55] flex flex-col items-center justify-center space-y-10 md:hidden"
           >
-            {/* Extra Sluit-tekst rechtsboven in de sidebar */}
             <button 
               onClick={() => setIsMenuOpen(false)}
               className="absolute top-10 right-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 flex items-center gap-2"
@@ -203,10 +251,11 @@ function AppLayout() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/project/1" element={<ProjectWrapper projectId="1" DetailComponent={BA3Detail} />} />
-        <Route path="/project/2" element={<ProjectWrapper projectId="2" DetailComponent={BachelorThesis2025Detail} />} />
-        <Route path="/project/3" element={<ProjectWrapper projectId="3" DetailComponent={BachelorThesis2022Detail} />} />
-        <Route path="/project/4" element={<ProjectWrapper projectId="4" DetailComponent={UrbanInterventionDetail} />} />
+        <Route path="/project/1" element={<ProjectWrapper DetailComponent={BA3Detail} />} />
+        <Route path="/project/2" element={<ProjectWrapper DetailComponent={BachelorThesis2025Detail} />} />
+        <Route path="/project/3" element={<ProjectWrapper DetailComponent={BachelorThesis2022Detail} />} />
+        <Route path="/project/4" element={<ProjectWrapper DetailComponent={UrbanInterventionDetail} />} />
+        <Route path="/archive/:categoryId" element={<ArchiveWrapper />} />
       </Routes>
     </div>
   );

@@ -62,6 +62,7 @@ export default function Archive({ onCategorySelect }) {
             {cat.images.map((img, index) => (
               <SwiperSlide key={index}>
                 <div 
+                  onClick={() => onCategorySelect(cat)}
                   className="overflow-hidden aspect-[4/3] bg-gray-50"
                 >
                   <img 

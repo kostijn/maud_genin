@@ -21,7 +21,7 @@ export default function About() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start px-4"
+      className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start px-4 mt-20"
     >
       {/* LINKER KOLOM: De Foto */}
       <motion.div variants={itemVariants} className="md:col-span-5 flex flex-col gap-6 w-full">
