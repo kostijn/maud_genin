@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 
 // Importeer je componenten
@@ -58,7 +59,7 @@ function Home() {
   );
 }
 
-function ProjectWrapper({ projectId, DetailComponent }) {
+function ProjectWrapper({ projectId }) {
   const navigate = useNavigate();
   
   const projects = [
