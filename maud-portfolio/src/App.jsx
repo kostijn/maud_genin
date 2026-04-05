@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
+import { useScroll, useSpring, AnimatePresence } from 'framer-motion'
 
 // Importeer je componenten
 import About from './components/About'
