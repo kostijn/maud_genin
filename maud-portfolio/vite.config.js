@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   // BELANGRIJK: Vervang dit door de exacte naam van je GitHub repo
-  base: '/maud_genin/', 
+  base: '/', 
   plugins: [
     react(),
     tailwindcss(),
