@@ -67,14 +67,11 @@ export default function About() {
         {/* Biografie & Links */}
         <div className="space-y-8 max-w-xl">
           <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-900 tracking-tight font-['Space_Grotesk']">
-            Master of Architecture (KU Leuven), working at the intersection of
-            space, material, and art.
+            Master of Architecture (KU Leuven), exploring how space and material shape experience.
           </p>
 
           <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed">
-            With a focus on model-making and detail-oriented design, my work
-            investigates the tactile relationship between architectural scale
-            and human experience.
+            Through meticulous model-making and attention to detail, my work explores the tactile dialogue between architectural scale and human experience.
           </p>
 
           <div className="flex gap-10 pt-4">
