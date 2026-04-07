@@ -7,13 +7,14 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 import About from './components/About'
 import Work from './components/work/Work'
 import Archive from './components/archive/Archive'
-import ArchiveGallery from './components/archive/ArchiveGallery'
+import ArchiveModels from './components/archive/ArchiveModels'
+import ArchiveDrawings from './components/archive/ArchiveDrawings'
 import Contact from './components/Contact'
 
 // Detail pagina's
 import BA3Detail from './components/work/BA3Detail'
 import BachelorThesis2025Detail from './components/work/BachelorThesis2025Detail'
-import BachelorThesis2022Detail from './components/work/BachelorThesis2022Detail'
+import Grieving from './components/work/Grieving'
 import UrbanInterventionDetail from './components/work/UrbanInterventionDetail'
 
 // --- 1. CENTRALE DATA ---
@@ -22,14 +23,14 @@ import UrbanInterventionDetail from './components/work/UrbanInterventionDetail'
 const PROJECTS = [
   { id: 1, year: '3rd Bachelor Year 2024', title: 'BA3', img: './images/ba3/facade_front.png', component: BA3Detail },
   { id: 2, year: '3rd Bachelor Year 2025', title: 'Bachelor Thesis', img: './images/bachproef/snede.png', component: BachelorThesis2025Detail },
-  { id: 3, year: '2022', title: 'Bachelor Thesis', img: './images/bachproef2022/model_study.png', component: BachelorThesis2022Detail },
+  { id: 3, year: '1st Master Year 2025', title: 'MA1', img: './images/grieving/facade.jpeg', component: Grieving },
   { id: 4, year: '2021', title: 'Urban Intervention', img: './images/urban/intervention_study.png', component: UrbanInterventionDetail },
 ];
 
 const ARCHIVE_CATEGORIES = [
-  { id: 'models', title: 'Models', images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg'] },
-  { id: 'drawings', title: 'Drawings', images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg'] },
-  { id: 'autocad', title: 'AutoCAD', images: ['./images/Maquette_ex.jpg'] }
+  { id: 'models', title: 'Models',},
+  { id: 'drawings', title: 'Drawings'},
+    { id: 'autocad', title: 'AutoCAD' }
 ];
 
 // --- 2. WRAPPERS VOOR ROUTES ---
@@ -57,14 +58,28 @@ function ArchiveWrapper() {
 
   if (!category) return null;
 
-  return (
-    <ArchiveGallery 
-      category={category} 
+  if (category.id === 'models') {
+    return (
+      <ArchiveModels
       onBack={() => navigate('/', { state: { scrollTo: 'archive' } })} 
     />
   );
 }
-
+  if (category.id === 'drawings') {
+    return (
+      <ArchiveDrawings
+      onBack={() => navigate('/', { state: { scrollTo: 'archive' } })} 
+    />
+  );
+}
+  if (category.id === 'autocad') {
+      return (
+        <ArchiveAutocad
+        onBack={() => navigate('/', { state: { scrollTo: 'archive' } })} 
+      />
+    );
+  }
+}
 // --- 3. MAIN COMPONENTS ---
 
 function Home() {
