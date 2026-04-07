@@ -11,12 +11,12 @@ export default function Archive({ onCategorySelect }) {
     { 
       id: 'models', 
       title: 'Models', 
-      images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
+      images: ['./images/grieving/maquette/1.webp', './images/bachproef/maquette/2.webp', './images/ba3/maquette/3.webp','./images/grieving/maquette/8.webp',  './images/bachproef/maquette/5.webp', './images/andere maquette/2.webp', './images/ba3/maquette/7.webp', './images/ba3/maquette/1.webp']
     },
     { 
       id: 'drawings', 
       title: 'Drawings', 
-      images: ['./images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg', './images/Maquette_ex.jpg']
+     images: ['./images/drawings/1.png', './images/drawings/2.png', './images/drawings/3.png', './images/drawings/4.png', './images/drawings/5.png', './images/drawings/6.png']
     },
     { 
       id: 'autocad', 

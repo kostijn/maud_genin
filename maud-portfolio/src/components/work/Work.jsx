@@ -11,25 +11,19 @@ export default function Work({ onProjectClick }) {
       id: 1,
       year: '3rd Bachelor Year 2024',
       title: 'BA3',
-      img: './images/ba3/facade_front.png',
+      img: './images/ba3/facade_front.webp',
     },
     {
       id: 2,
       year: '3rd Bachelor Year 2025',
       title: 'Bachelor Thesis',
-      img: './images/bachproef/snede.png',
+      img: './images/bachproef/new.webp',
     },
     {
       id: 3,
-      year: '2022',
-      title: 'Bachelor Thesis',
-      img: './images/bachproef2022/model_study.png',
-    },
-    {
-      id: 4,
-      year: '2021',
-      title: 'Urban Intervention',
-      img: './images/urban/intervention_study.png',
+      year: '1st Master Year 2025',
+      title: 'MA1',
+      img: './images/grieving/facade.jpeg',
     },
   ];
 
