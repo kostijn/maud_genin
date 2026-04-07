@@ -27,7 +27,7 @@ export default function About() {
       <motion.div variants={itemVariants} className="md:col-span-5 flex flex-col gap-6 w-full">
         <div className="relative overflow-hidden shadow-sm rounded-sm h-[320px] md:h-[520px] w-full">
           <img 
-            src="./images/DSC_3912.JPG" 
+            src="./images/boobi.jpeg" 
             alt="Maud Genin" 
             className="w-full h-full object-cover grayscale contrast-[1.1] block"
           />

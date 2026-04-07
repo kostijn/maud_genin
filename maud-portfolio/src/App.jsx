@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
 import { HashRouter as Router, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
@@ -128,14 +129,6 @@ function AppLayout() {
   const [isOverContact, setIsOverContact] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
 
   // Poll until the section element exists in the DOM, then scroll
   const waitForElement = (id, retries = 20) => {
