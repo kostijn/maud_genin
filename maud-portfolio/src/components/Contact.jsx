@@ -25,7 +25,7 @@ export default function Contact() {
           <div className="flex flex-col items-center gap-2">
             <p className="text-xs uppercase tracking-[0.15em] text-gray-400 font-medium">LinkedIn</p>
             <a 
-              href="https://linkedin.com/in/maud-genin" 
+              href="https://www.linkedin.com/in/maud-genin-737aa8306/" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-base md:text-lg font-light tracking-wide hover:text-gray-400 transition-colors duration-300"

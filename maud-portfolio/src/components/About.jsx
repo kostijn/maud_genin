@@ -60,7 +60,7 @@ export default function About() {
           </p>
           
           <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed">
-            With a focus on model-making and detail-oriented design, her work investigates 
+            With a focus on model-making and detail-oriented design, my work investigates 
             the tactile relationship between architectural scale and human experience.
           </p>
 
@@ -68,7 +68,7 @@ export default function About() {
              <a href="#contact" className="group text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black/10 pb-1 hover:border-black transition-all">
                Contact
              </a>
-             <a href="https://linkedin.com" target="_blank" className="group text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black/10 pb-1 hover:border-black transition-all">
+             <a href="https://www.linkedin.com/in/maud-genin-737aa8306/" target="_blank" className="group text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black/10 pb-1 hover:border-black transition-all">
                Linkedin
              </a>
           </div>
