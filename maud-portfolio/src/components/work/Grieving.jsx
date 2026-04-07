@@ -14,7 +14,7 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
       id: "model_study",
       src: "./images/grieving/facade_trimmed.jpeg",
       description:
-        "The Grieving Border is a project that redefines the boundary between the Cemetery ofLaeken and the city.",
+        "The Grieving Border is a project that redefines the boundary between the Cemetery of Laeken and the city.",
     },
   ];
 
@@ -66,7 +66,7 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
   const bg = [
     {
       id: "bg",
-      src: "./images/grieving/beaugosse.webp",
+      src: "./images/grieving/beaugosse_trimmed.jpg",
       title: "View from Rue des Artistes",
     },
   ];
@@ -140,7 +140,7 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
           <div className="w-24 h-[0.5px] bg-black/20 mt-12"></div>
         </header>
 
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24 mb-8">
           {soloBigImage.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-4">
               <div
@@ -165,7 +165,7 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-black/5 pt-24 mb-24 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-black/5 pt-16 mb-24 max-w-4xl mx-auto">
           {pairedImages.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-4">
               <div
@@ -198,7 +198,7 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
                   className="w-full h-auto hover:scale-[1.01] transition-transform duration-700"
                 />
               </div>
-              <div className="max-w-4xl mx-auto text-center">
+              <div className="max-w-4xl mx-auto text-center mt-8">
                 <p className="text-lg md:text-2xl text-gray-700 font-light leading-relaxed">
                   {item.description}
                 </p>
@@ -227,9 +227,9 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="mb-24">
+        <div className="mb-8">
           {/* 1. SINGLE DESCRIPTION ABOVE */}
-          <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="max-w-4xl mx-auto text-center mb-6">
             <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed">
               Wanting to give a new place to the urns at the back of the
               cemetery, which felt like forgotten objects, I placed them in a
@@ -292,7 +292,7 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
         ))}
       </div>
 
-      <div className="space-y-24 mb-24">
+      <div className="space-y-24 mb-8">
         {axo2.map((item) => (
           <div key={item.id} className="flex flex-col items-center space-y-4">
             <div
@@ -343,13 +343,13 @@ export default function BachelorThesis2022Detail({ project, onBack }) {
       </div>
 
       {/* --- MODELS SECTION --- */}
-      <section className="pt-32 mb-32">
-        <header className="mb-24 flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-['Playfair_Display'] italic text-black mb-12">
-            Models
-          </h2>
-          <div className="w-16 h-[0.5px] bg-black/20"></div>
-        </header>
+      <section className="pt-8 mb-32">
+          <header className="mb-8 flex flex-col items-center">
+            <p className="text-3xl md:text-5xl font-['Playfair_Display'] italic mb-6">
+              Models
+            </p>
+            <div className="w-16 h-[0.5px] bg-black/20"></div>
+          </header>
 
         {/* Row 1 & 2: 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-8">

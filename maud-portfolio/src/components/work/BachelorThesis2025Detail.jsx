@@ -15,7 +15,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
       src: "./images/bachproef/new.webp",
       title: "Snede",
       description:
-        "The Elevated Park in Brussels, near Portes de Ninove, transforms a previously paved area into a raised green space with panoramic views. It provides much-needed access to nature and leisure in a neighborhood that previously lacked parks.",
+        "This Elevated Park in Brussels, near Portes de Ninove, transforms a previously paved area into a raised green space with panoramic views. It provides much-needed access to nature and leisure in a neighborhood that previously lacked parks.",
     },
     { id: "charbon", src: "./images/bachproef/charbon.webp", title: "Charbon" },
   ];
@@ -23,7 +23,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
   const soloWithoutDesc = [
     {
       id: "schets_upper",
-      src: "./images/bachproef/schets_upper.png",
+      src: "./images/bachproef/schets_upper_trimmed.png",
       title: "Schets Upper",
       description:
         "The whole is made up of several layers woven together, creating a play of tension and disorientation where visitors can lose themselves.",
@@ -146,7 +146,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
           <div className="w-24 h-[0.5px] bg-black/20 mt-12"></div>
         </header>
 
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24">
           {textImages.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-4">
               <div
@@ -168,7 +168,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="mb-16">
+        <div>
           {/* 2. THE GRID OF 3 IMAGES */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-black/5 pt-24 mb-8 max-w-4xl mx-auto">
             {pairedImages.map((item) => (
@@ -197,7 +197,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
           <div className="max-w-4xl mt-8 mx-auto text-center mb-12">
             <p className="text-lg md:text-2xl text-gray-700 font-light leading-relaxed">
               The structure functions as a walkway: a smooth, continuous path
-              that connects three diƯerent streets.
+              that connects three different streets.
             </p>
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24 mb-8">
           {miniImages.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-6">
               <div
@@ -285,14 +285,11 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
                   className="w-full h-auto hover:scale-[1.01] transition-transform duration-700"
                 />
               </div>
-              <span className="text-[10px] uppercase tracking-widest text-gray-300 text-center">
-                {item.title}
-              </span>
             </div>
           ))}
         </div>
 
-        <div className="space-y-24 mb-2">
+        <div className="space-y-24 mb-8">
           {miniImages2.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-6">
               <div
@@ -309,7 +306,7 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="space-y-24 mb-48">
+        <div className="space-y-24 mb-16">
           {flowerImage.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-6">
               <div
@@ -328,13 +325,14 @@ export default function BachelorThesis2025Detail({ project, onBack }) {
       </div>
 
       {/* --- MODELS SECTION --- */}
-      <section className="pt-32 mb-32">
-        <header className="mb-24 flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-['Playfair_Display'] italic text-black mb-12">
-            Models
-          </h2>
-          <div className="w-16 h-[0.5px] bg-black/20"></div>
-        </header>
+      <section className="pt-8 mb-32">
+          <header className="mb-8 flex flex-col items-center">
+            <p className="text-3xl md:text-5xl font-['Playfair_Display'] italic mb-6">
+              Models
+            </p>
+            <div className="w-16 h-[0.5px] bg-black/20"></div>
+          </header>
+
 
         {/* Row 1 & 2: 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-8">

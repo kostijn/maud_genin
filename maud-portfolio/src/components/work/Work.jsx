@@ -1,37 +1,40 @@
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 export default function Work({ onProjectClick }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
   const projects = [
     {
       id: 1,
       year: '3rd Bachelor Year 2024',
-      title: 'BA3',
+      title: 'Rauwers Site',
       img: './images/ba3/facade_front.webp',
     },
     {
       id: 2,
       year: '3rd Bachelor Year 2025',
-      title: 'Bachelor Thesis',
+      title: 'A Brussels Utopia',
       img: './images/bachproef/new.webp',
     },
     {
       id: 3,
       year: '1st Master Year 2025',
-      title: 'MA1',
-      img: './images/grieving/facade.jpeg',
+      title: 'The Grieving Border',
+      img: './images/grieving/facade_trimmed.jpeg',
     },
   ];
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4">
       <div className="flex items-center justify-between gap-4 md:gap-12">
-        
-        {/* Linker Pijl */}
+
+        {/* Left Arrow */}
         <button className="prev-arrow hidden md:block text-2xl font-light text-gray-300 hover:text-black transition-colors p-4">
           <span className="sr-only">Vorige</span>
           <svg width="30" height="60" viewBox="0 0 30 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,10 +42,10 @@ export default function Work({ onProjectClick }) {
           </svg>
         </button>
 
-        {/* De Carousel (Het Midden) */}
+        {/* Carousel */}
         <div className="flex-1 min-w-0">
           <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={30}
             slidesPerView={1}
             loop={true}
@@ -51,29 +54,24 @@ export default function Work({ onProjectClick }) {
               nextEl: '.next-arrow',
               prevEl: '.prev-arrow',
             }}
-            pagination={{ 
-              clickable: true, 
-              el: '.custom-pagination',
-              bulletClass: 'swiper-pagination-bullet !bg-black' 
-            }}
+            onSwiper={(swiper) => setSwiperInstance(swiper)}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             className="w-full"
           >
             {projects.map((project) => (
               <SwiperSlide key={project.id}>
-                <div 
+                <div
                   className="flex flex-col items-center cursor-pointer group"
                   onClick={() => onProjectClick(project)}
                 >
-                  {/* Afbeelding Container */}
                   <div className="w-full aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-gray-50 mb-6">
-                    <img 
-                      src={project.img} 
-                      alt={project.title} 
+                    <img
+                      src={project.img}
+                      alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-[6000ms] group-hover:scale-105"
                     />
                   </div>
 
-                  {/* Tekst onder de afbeelding */}
                   <div className="text-center">
                     <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-gray-400 mb-2">
                       {project.year}
@@ -88,7 +86,7 @@ export default function Work({ onProjectClick }) {
           </Swiper>
         </div>
 
-        {/* Rechter Pijl */}
+        {/* Right Arrow */}
         <button className="next-arrow hidden md:block text-2xl font-light text-gray-300 hover:text-black transition-colors p-4">
           <span className="sr-only">Volgende</span>
           <svg width="30" height="60" viewBox="0 0 30 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,10 +95,28 @@ export default function Work({ onProjectClick }) {
         </button>
       </div>
 
-      {/* Navigatie Puntjes (gecentreerd onder de tekst) */}
-      <div className="custom-pagination flex justify-center mt-8 gap-2"></div>
-      
-      {/* Mobiele Swipe Instructie */}
+      {/* Thumbnail Navigation */}
+      <div className="flex justify-center mt-8 gap-3">
+        {projects.map((project, index) => (
+          <button
+            key={project.id}
+            onClick={() => swiperInstance?.slideToLoop(index)}
+            className={`relative overflow-hidden transition-all duration-300 ${
+              activeIndex === index
+                ? 'w-24 h-14 opacity-100 ring-1 ring-black ring-offset-2'
+                : 'w-20 h-12 opacity-40 hover:opacity-70'
+            }`}
+          >
+            <img
+              src={project.img}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Mobile swipe hint */}
       <p className="md:hidden text-center text-[10px] uppercase tracking-widest text-gray-400 mt-6">
         Swipe to explore projects
       </p>

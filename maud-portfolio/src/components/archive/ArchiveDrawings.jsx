@@ -5,7 +5,7 @@ export default function ArchiveGallery({ onBack }) {
 
   // Hardcoded paths for all 33 images across your 3 folders
   const allImages = [
-    ...Array.from({ length: 10 }, (_, i) => `./images/drawings/${i + 1}.png`),
+    ...Array.from({ length: 9 }, (_, i) => `./images/drawings/${i + 1}.webp`),
 
   ];
 
@@ -24,7 +24,7 @@ export default function ArchiveGallery({ onBack }) {
             <div className="flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-2">Archive</span>
               <h1 className="text-3xl md:text-5xl font-light text-black tracking-tight">
-                Drawings
+                Details
               </h1>
             </div>
 

@@ -69,7 +69,7 @@ export default function BA3Detail({ project, onBack }) {
             {project.year}
           </span>
           <h1 className="text-4xl md:text-7xl font-['Playfair_Display'] italic text-black leading-tight max-w-4xl">
-            Renovation
+            Rauwers Site
           </h1>
           <div className="w-24 h-[0.5px] bg-black/20 mt-12"></div>
         </header>
@@ -92,7 +92,7 @@ export default function BA3Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24">
           {plan.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-4">
               <div
@@ -113,7 +113,7 @@ export default function BA3Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-24 mb-24 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-24 mb-8 max-w-4xl mx-auto">
           {pairedPlans.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-4">
               <div
@@ -127,7 +127,7 @@ export default function BA3Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24 mb-8">
           {snede.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-6">
               <div
@@ -140,7 +140,7 @@ export default function BA3Detail({ project, onBack }) {
           ))}
         </div>
 
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24">
           {second.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-6">
               <div
@@ -149,13 +149,13 @@ export default function BA3Detail({ project, onBack }) {
               >
                 <img src={item.src} alt={item.title} className="w-full h-auto hover:scale-[1.01] transition-transform duration-700" />
               </div>
-              <span className="text-[10px] uppercase tracking-widest text-gray-300 text-center">{item.title}</span>
+              <span className="text-[10px] uppercase tracking-widest text-gray-400 text-center">{item.title}</span>
             </div>
           ))}
         </div>
 
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-24 mb-24 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto">
           {pairedImages.map((item) => (
             <div key={item.id} className="flex flex-col items-center space-y-4">
               <div
@@ -166,7 +166,7 @@ export default function BA3Detail({ project, onBack }) {
               </div>
             </div>
           ))}
-          <div className="md:col-span-2 max-w-4xl mx-auto text-center mb-12">
+          <div className="md:col-span-2 max-w-4xl mx-auto text-center mb-6">
             <span className="text-[10px] uppercase tracking-widest text-gray-400">
               View from the café
             </span>
@@ -177,11 +177,11 @@ export default function BA3Detail({ project, onBack }) {
       </div>
 
       {/* --- MODELS SECTION --- */}
-        <section className="pt-32 mb-32">
-          <header className="mb-24 flex flex-col items-center">
-            <h2 className="text-3xl md:text-5xl font-['Playfair_Display'] italic text-black mb-12">
+        <section className="pt-8 mb-32">
+          <header className="mb-8 flex flex-col items-center">
+            <p className="text-3xl md:text-5xl font-['Playfair_Display'] italic mb-6">
               Models
-            </h2>
+            </p>
             <div className="w-16 h-[0.5px] bg-black/20"></div>
           </header>
 
